@@ -78,3 +78,13 @@
 /xcodebuild
 /.vscode
 !webrtc/*
+/x64
+/.vs
+/packages
+/WeiRtcSampleApp/x64
+/WeiStreaming.WeiRtc.Native/x64
+/WeiRtcSampleApp/Generated Files
+/WeiRtcSampleApp/VideoConferencing/.vs
+/WeiRtcSampleApp/VideoConferencing/Debug
+/WeiRtcSampleApp/VideoConferencing/packages
+/WeiRtcSampleApp/VideoConferencing/x64
