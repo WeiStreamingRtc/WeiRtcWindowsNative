@@ -1,0 +1,10 @@
+namespace WeiRtcSampleApp
+{
+    [default_interface]
+    runtimeclass WeiRtcControl : Windows.UI.Xaml.Controls.UserControl
+    {
+        WeiRtcControl();
+        String IpAddress;
+        void Start(String value);
+    }
+}

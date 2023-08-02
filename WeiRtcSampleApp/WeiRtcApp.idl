@@ -1,0 +1,15 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
+namespace WeiRtcSampleApp
+{
+	[default_interface]
+	runtimeclass WeiRtcApp
+	{
+	  WeiRtcApp();
+	  String Room{ get; };
+	  Windows.Foundation.IAsyncAction Init(Windows.UI.Xaml.UIElement canvas, Windows.UI.Xaml.UIElement pipCanvas, 
+		  Windows.UI.Xaml.UIElement screenPipCanvas, String room);
+	  Windows.Foundation.IAsyncAction StartDesktopCaptuer();
+	}
+}
