@@ -35,6 +35,7 @@ namespace WeiRtc {
                 .set_rotation(::webrtc::kVideoRotation_0)
                 .set_timestamp_us(frame.timestamp_us())
                 .set_id(frame.id());
+            /* libwebrtc release version does not expose this api
             if (frame.has_update_rect()) {
                 ::webrtc::VideoFrame::UpdateRect new_rect =
                     frame.update_rect().ScaleWithFrame(
@@ -43,6 +44,7 @@ namespace WeiRtc {
 
                 new_frame_builder.set_update_rect(new_rect);
             }
+            */
             _broadcaster.OnFrame(new_frame_builder.build());
         }
         else {
