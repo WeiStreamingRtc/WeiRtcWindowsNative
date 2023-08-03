@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.200729.8\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.200729.8\build\native\Microsoft.Windows.CppWinRT.props')" />  
+  <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.200729.8\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.200729.8\build\native\Microsoft.Windows.CppWinRT.props')" />
   <PropertyGroup Label="Globals">
     <CppWinRTOptimized>true</CppWinRTOptimized>
     <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
@@ -87,7 +87,9 @@
       <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\libwebrtc\out\win\$(Configuration)\$(Platform)\obj</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy ..\x64\Debug\Microsoft.Graphics.Canvas.dll  ..\x64\Debug\WeiRtcSampleApp\AppX\</Command>
+      <!--Has to do it here, as the folder AppX is created by when first time run the app. If add this step to the app side, this step will fail the build at the very first time -->
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy ..\$(Platform)\$(Configuration)\Microsoft.Graphics.Canvas.dll  ..\$(Platform)\$(Configuration)\WeiRtcSampleApp\AppX\
+copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
@@ -109,6 +111,10 @@
       <GenerateXMLDocumentationFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateXMLDocumentationFiles>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\libwebrtc;..\libwebrtc\third_party\abseil-cpp;D:\git\WeiStreaming\windows\webrtc\src\out\win\$(Configuration)\$(PlatformTarget)\gen;..\libwebrtc\third_party\libyuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\$(Platform)\$(Configuration)\
+copy ..\$(Platform)\$(Configuration)\Microsoft.Graphics.Canvas.dll  ..\$(Platform)\$(Configuration)\WeiRtcSampleApp\AppX\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CreateSessionDescriptionObserver.h" />

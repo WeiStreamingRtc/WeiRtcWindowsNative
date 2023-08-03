@@ -100,13 +100,15 @@ namespace WeiRtc {
             .set_rotation(::webrtc::kVideoRotation_0)
             .set_timestamp_us(frame.timestamp_us());
 
-        if (frame.has_update_rect()) {
+        /* does not work well with relase version, libwebrtc release version does not expose this api
+        /if (frame.has_update_rect()) {
             ::webrtc::VideoFrame::UpdateRect new_rect =
                 frame.update_rect().ScaleWithFrame(
                     frame.width(), frame.height(), 0, 0, frame.width(),
                     frame.height(), _desiredWidth, _desiiredHeight);
             scale_frame_builder.set_update_rect(new_rect);
         }
+        */
 
         size_t bits = 32;
         size_t size = _desiredWidth * _desiiredHeight * (bits >> 3);

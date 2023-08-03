@@ -97,17 +97,19 @@
     <Link />
     <Link>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ole32.lib;oleaut32.lib;Kernel32.lib;Gdi32.lib;Winmm.lib;Secur32.lib;webrtc.lib;WeiStreaming.WeiRtc.Native.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\libwebrtc\out\win\$(Configuration)\$(Platform)\obj;..\$(Platform)\$(Configuration);C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64;D:\Program Files\Microsoft Visual Studio\2022\VC\Tools\MSVC\14.36.32532\lib\x64;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\libwebrtc\out\win\$(Configuration)\$(Platform)\obj;..\libweirtc\$(Platform)\$(Configuration);C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64;D:\Program Files\Microsoft Visual Studio\2022\VC\Tools\MSVC\14.36.32532\lib\x64;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WEBRTC_WIN;NOMINMAX;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\libwebrtc;..\libwebrtc\third_party\abseil-cpp;D:\git\WeiStreaming\windows\webrtc\src\out\win\$(Configuration)\$(PlatformTarget)\gen;..\libwebrtc\third_party\libyuv\include;..\WeiStreaming.WeiRtc.Native;..\WeiStreaming.WeiRtc.Native\$(Platform)\$(Configuration)\Generated Files\;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ole32.lib;oleaut32.lib;Kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ole32.lib;oleaut32.lib;Kernel32.lib;Gdi32.lib;Winmm.lib;Secur32.lib;webrtc.lib;WeiStreaming.WeiRtc.Native.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\libwebrtc\out\win\$(Configuration)\$(Platform)\obj;..\libweirtc\$(Platform)\$(Configuration);C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64;D:\Program Files\Microsoft Visual Studio\2022\VC\Tools\MSVC\14.36.32532\lib\x64;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

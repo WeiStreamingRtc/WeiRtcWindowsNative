@@ -82,12 +82,21 @@ Step 4 and 5 are required, after it is done, run following build commands:
 
 ```
 gn gen --ide=vs2019 out\debug\win-x64 --filters=//:webrtc --args="is_component_build=false use_lld=false is_debug=true is_clang=false rtc_build_examples=false rtc_build_tools=false rtc_include_tests=false target_cpu=\"x64\" target_os=\"win\" treat_warnings_as_errors=false use_custom_libcxx=false use_rtti=true rtc_win_video_capture_winrt=true rtc_build_examples=false rtc_win_use_mf_h264=true enable_libaom=false rtc_enable_protobuf=false"
+
 ninja -C out\debug\win-x64
 
-```
-To clean:
-```
 gn clean out\debug\win-x64
+```
+
+
+To build  release version
+
+```
+gn gen --ide=vs2019 out\release\win-x64 --filters=//:webrtc --args="is_component_build=false use_lld=false is_debug=false is_clang=false rtc_build_examples=false rtc_build_tools=false rtc_include_tests=false target_cpu=\"x64\" target_os=\"win\" treat_warnings_as_errors=false use_custom_libcxx=false use_rtti=true rtc_win_video_capture_winrt=true rtc_build_examples=false rtc_win_use_mf_h264=true enable_libaom=false rtc_enable_protobuf=false"
+
+ninja -C out\release\win-x64
+
+gn clean out\win\Release\x64
 ```
 ### Install Android app
 
