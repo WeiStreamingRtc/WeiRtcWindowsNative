@@ -89,7 +89,7 @@
     <PostBuildEvent>
       <!--Has to do it here, as the folder AppX is created by when first time run the app. If add this step to the app side, this step will fail the build at the very first time -->
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy ..\$(Platform)\$(Configuration)\Microsoft.Graphics.Canvas.dll  ..\$(Platform)\$(Configuration)\WeiRtcSampleApp\AppX\
-copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\$(Platform)\$(Configuration)\</Command>
+copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\lib\$(Platform)\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
@@ -112,7 +112,7 @@ copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\$
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\libwebrtc;..\libwebrtc\third_party\abseil-cpp;D:\git\WeiStreaming\windows\webrtc\src\out\win\$(Configuration)\$(PlatformTarget)\gen;..\libwebrtc\third_party\libyuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\$(Platform)\$(Configuration)\
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\lib\$(Platform)\$(Configuration)\
 copy ..\$(Platform)\$(Configuration)\Microsoft.Graphics.Canvas.dll  ..\$(Platform)\$(Configuration)\WeiRtcSampleApp\AppX\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
