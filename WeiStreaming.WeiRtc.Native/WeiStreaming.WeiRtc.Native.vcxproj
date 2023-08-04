@@ -109,7 +109,7 @@ copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\l
     <ClCompile />
     <ClCompile>
       <GenerateXMLDocumentationFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\libwebrtc;..\libwebrtc\third_party\abseil-cpp;D:\git\WeiStreaming\windows\webrtc\src\out\win\$(Configuration)\$(PlatformTarget)\gen;..\libwebrtc\third_party\libyuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\libwebrtc;..\libwebrtc\third_party\abseil-cpp;..\libwebrtc\third_party\libyuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy ..\$(Platform)\$(Configuration)\WeiStreaming.WeiRtc.Native.* ..\libweirtc\lib\$(Platform)\$(Configuration)\

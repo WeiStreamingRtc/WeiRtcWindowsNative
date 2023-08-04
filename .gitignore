@@ -91,3 +91,5 @@
 /libweirtc/lib/x64/Debug
 *.pdb
 /libweirtc/lib/x64/Release/WeiStreaming.WeiRtc.Native.xml
+/hooks/
+/lfs/
