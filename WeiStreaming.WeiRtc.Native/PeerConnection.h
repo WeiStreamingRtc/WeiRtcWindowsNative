@@ -12,27 +12,6 @@
 
 namespace WeiRtc {
 
-    /*
-    //create sdp callbacks
-    typedef void (*PeerConnectionCreateSdpSuccessCallback)(
-        SessionDescription* sdp);
-    typedef void (*PeerConnectionCreateSdpFailureCallback)(const char* msg);
-    //set sdp callbacks
-    typedef void (*PeerConnectionSetSdpSuccessCallbak)();
-    typedef void (*PeerConnectionSetSdpFailureCallback)(const char* msg);
-    //pc state change callbacks
-    typedef void (*PeerConnectionSignalingStateChangedCallback)(int state);
-    typedef void (*PeerConnectionStateChangedCallback)(int state);
-    //add ice callbacks
-    typedef void (*PeerConnectionAddIceCandidateSuccessCallback)();
-    typedef void (*PeerConnectionAddIceCandidateFailureCallback)(const char* msg);
-    //ice state change call backs
-    typedef void (*PeerConnectionIceConnectionStateChangeCallback)(int state);
-    typedef void (*PeerConnectionIceGatheringStateChangeCallback)(int state);
-
-    */
-
-
     class WEI_EXPORT PeerConnection : public webrtc::PeerConnectionObserver {
     public:
 
@@ -101,21 +80,6 @@ namespace WeiRtc {
         // Call this when done with the call, or detected connection has dropped to
         // clear up the resource.
         void Close();
-
-        /*
-        void SetRemoteDescription(
-            SessionDescription const& sdp,
-            const PeerConnectionSetSdpSuccessCallbak successCallback,
-            const PeerConnectionSetSdpFailureCallback failureCallback);
-        void SetLocalDescription(SessionDescription const& sdp,
-            const PeerConnectionSetSdpSuccessCallbak successCallback,
-            const PeerConnectionSetSdpFailureCallback failureCallback);
-        void CreateAnswer(const PeerConnectionCreateSdpSuccessCallback
-        successCallback, const PeerConnectionCreateSdpFailureCallback
-        failureCallback); void CreateOffer(const
-        PeerConnectionCreateSdpSuccessCallback successCallback, const
-        PeerConnectionCreateSdpFailureCallback failureCallback);
-            */
 
     private:
         const char* _streamId = "wei_stream_id";

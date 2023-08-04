@@ -9,18 +9,11 @@ namespace WeiRtc {
     class SetSessionDescriptionObserver
         : public webrtc::SetSessionDescriptionObserver {
     public:
-        /*SetSessionDescriptionObserver(
-            const PeerConnectionSetSdpSuccessCallbak successCallback,
-            const PeerConnectionSetSdpFailureCallback failureCallback); */
-
         SetSessionDescriptionObserver(PeerConnectionEventHandler* eventHandler);
-
         void OnSuccess() override;
         void OnFailure(webrtc::RTCError error) override;
 
     private:
-        //PeerConnectionSetSdpSuccessCallbak _successCallback;
-        //PeerConnectionSetSdpFailureCallback _failureCallback;
         PeerConnectionEventHandler* _eventHandler;
     };
 

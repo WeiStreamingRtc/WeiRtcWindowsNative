@@ -1,7 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT license.
-
-#pragma once
+﻿#pragma once
 #include "App.xaml.g.h"
 
 namespace winrt::WeiRtcSampleApp::implementation {

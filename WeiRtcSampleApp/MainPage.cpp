@@ -1,7 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT license.
-
-// clang-format off
+﻿// clang-format off
 #include "pch.h"
 #include "MainPage.h"
 #include "MainPage.g.cpp"

@@ -6,7 +6,7 @@
 // clang-format on
 
 namespace WeiRtc {
-
+    //this is connected to the peer connection by callback : PeerConnectionObserver::OnTrack()
     VideoRender::VideoRender(winrt::Windows::UI::Xaml::UIElement canvas)
         : _uiThread(canvas.Dispatcher()), _surface(nullptr) {
 
