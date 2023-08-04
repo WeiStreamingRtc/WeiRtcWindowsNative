@@ -93,3 +93,5 @@
 /libweirtc/lib/x64/Release/WeiStreaming.WeiRtc.Native.xml
 /hooks/
 /lfs/
+
+*.aps

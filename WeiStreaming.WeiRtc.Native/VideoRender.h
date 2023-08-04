@@ -8,7 +8,6 @@
 
 namespace WeiRtc {
 
-    //this is connected to the peer connection by callback : PeerConnectionObserver::OnTrack()
     class WEI_EXPORT VideoRender : public rtc::VideoSinkInterface<webrtc::VideoFrame> {
     public:
         VideoRender(winrt::Windows::UI::Xaml::UIElement canvas);
