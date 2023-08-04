@@ -40,9 +40,6 @@ namespace WeiRtc {
         //_videoCaptureModule is rtc::scoped_refptr, no need to worry about delete it, you cannot also
     }
 
-    void CameraCapturer::OnFrame(const webrtc::VideoFrame& frame) {
-        VideoSource::OnFrame(frame);
-    }
     bool CameraCapturer::StartCapture() {
         _videoCaptureModule->RegisterCaptureDataCallback(this);
         _videoCaptureModule->StartCapture(_capability);

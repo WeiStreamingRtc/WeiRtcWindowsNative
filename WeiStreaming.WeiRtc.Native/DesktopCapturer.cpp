@@ -22,9 +22,6 @@ namespace WeiRtc {
         //release the capture resource here
         Dispose();
     }
-    void DesktopCapturer::OnFrame(const webrtc::VideoFrame& frame) {
-        VideoSource::OnFrame(frame);
-    }
 
     void DesktopCapturer::CaptureFrame()
     {

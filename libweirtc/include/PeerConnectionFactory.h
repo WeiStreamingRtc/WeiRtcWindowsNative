@@ -6,7 +6,6 @@
 #include "api/media_stream_interface.h"
 #include "VideoTrackSource.h"
 #include "MediaTypes.h"
-#include "DesktopTrackSource.h"
 // clang-format on
 
 namespace WeiRtc {
@@ -30,7 +29,7 @@ namespace WeiRtc {
         rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface>
             _webrtcPeerConnectionFactoryInterface;
         VideoTrackSource* _videoSource;
-        DesktopTrackSource* _desktopSource;
+        VideoTrackSource* _desktopSource;
     };
 
 } //namespace WeiRtc {
