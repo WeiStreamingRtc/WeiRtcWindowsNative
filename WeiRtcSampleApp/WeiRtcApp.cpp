@@ -3,6 +3,7 @@
 
 // clang-format off
 #include "pch.h"
+
 #include "WeiRtcApp.h"
 #include "WeiRtcApp.g.cpp"
 
@@ -20,7 +21,6 @@
 #include "PeerConnectionFactory.h"
 #include "PeerConnectionStates.h"
 #include "SetSessionDescriptionObserer.h"
-#include "CameraCapturer.h"
 #include "VideoRender.h"
 #include "VideoSource.h"
 #include "MediaTypes.h"
@@ -165,8 +165,8 @@ Windows::Foundation::IAsyncAction WeiRtcApp::Init(
     _sample->CreatePeerConnection(canvas);
 
     _sample->AddAudioTrack();
-    _sample->AddVideoTrack(pipCanvas);
-    //_sample->AddDesktopTrack(*_screenPipCanvas);
+    //_sample->AddVideoTrack(pipCanvas);
+    _sample->AddDesktopTrack(*_screenPipCanvas);
     
     // Call this at the as the last step
     _sample->StartSignalling();

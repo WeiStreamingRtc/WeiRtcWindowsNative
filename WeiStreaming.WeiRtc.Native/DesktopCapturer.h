@@ -7,8 +7,6 @@
 
 #include <wingdi.h>
 
-#include "api/video/video_frame.h"
-#include "api/video/video_sink_interface.h"
 #include "api/video/i420_buffer.h"
 #include "modules/video_capture/video_capture.h"
 #include "modules/desktop_capture/desktop_capturer.h"
@@ -24,12 +22,11 @@
 
 namespace WeiRtc {
 
-    class DesktopCapturer : public VideoCapturer, public rtc::VideoSinkInterface<webrtc::VideoFrame>,
-        public VideoSource, public webrtc::DesktopCapturer::Callback {
+    class DesktopCapturer : public VideoCapturer, public webrtc::DesktopCapturer::Callback {
     public:
         DesktopCapturer();
         ~DesktopCapturer();
-        void OnFrame(const webrtc::VideoFrame& frame) override;
+
         void OnCaptureResult(webrtc::DesktopCapturer::Result result, std::unique_ptr<webrtc::DesktopFrame> frame) override;
         void CaptureFrame();
 

@@ -88,6 +88,6 @@
 /WeiRtcSampleApp/VideoConferencing/Debug
 /WeiRtcSampleApp/VideoConferencing/packages
 /WeiRtcSampleApp/VideoConferencing/x64
-/libweirtc/x64/Debug
+/libweirtc/lib/x64/Debug
 *.pdb
-/libweirtc/x64/Release/WeiStreaming.WeiRtc.Native.xml
+/libweirtc/lib/x64/Release/WeiStreaming.WeiRtc.Native.xml
