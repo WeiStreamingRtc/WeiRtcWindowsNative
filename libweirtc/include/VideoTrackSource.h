@@ -15,8 +15,6 @@ namespace WeiRtc {
         VideoTrackSource(winrt::Windows::UI::Xaml::UIElement pipCanvas, MediaTypes::VideoSourceType type);
         ~VideoTrackSource();
         void ConnectPip();
-        // Hank: this is the call back that will be called when peer get
-        // established, AddOrUpdateSink()
         rtc::VideoSourceInterface<webrtc::VideoFrame>* source() override;
 
     private:
