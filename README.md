@@ -113,11 +113,13 @@ adb install "D:\git\WeiStreaming\android\AppRTCDemo\app\build\outputs\apk\debug\
 2. Adding screen capture to existing call that already has camera capture.
 3. When starting screen capture, should prompt dialog and ask user to pick up which desktop to share.
 4. Handle more than one peer connection's case
+5. Add logger, refer this project websocket lib for c++: 	https://github.com/zaphoyd/websocketpp/blob/master/websocketpp/logger/basic.hpp
 
+#### Adding APIS to get peerconnection Stats or parameters like codec
 
-
-
-
+PeerConnection.cpp/h member _instance PeerConnectionInterface has API to:
+1.  get Stats:  GetStats().
+2.  get other paramters, GetReceivers() / GetSenders(), then we can get paramters like codec.
 
 
 
