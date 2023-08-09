@@ -121,7 +121,24 @@ PeerConnection.cpp/h member _instance PeerConnectionInterface has API to:
 1.  get Stats:  GetStats().
 2.  get other paramters, GetReceivers() / GetSenders(), then we can get paramters like codec.
 
+#### C++ websocket Lib
+From https://stackoverflow.com/questions/69051106/c-or-c-websocket-client-working-example, looks like IXWebSocket is working one, easy to use: https://github.com/machinezone/IXWebSocket. It support TSL also.
+
+It has http client support also.
 
 
+He tried many, include : https://github.com/zaphoyd/websocketpp/blob/master/websocketpp
+
+#### Websocket Server side
+C#:  https://learn.microsoft.com/en-us/aspnet/core/fundamentals/websockets?view=aspnetcore-7.0
+
+#### C++ HTTP client Lib
+http://www.curlpp.org/
+
+#### Call C# code from c++ side
+It need a hosting of the netcore.
+
+https://learn.microsoft.com/en-ca/dotnet/core/tutorials/netcore-hosting
+https://github.com/dotnet/samples/tree/main/core/hosting
 
 
