@@ -92,6 +92,7 @@ namespace WeiRtc {
 
         std::vector<rtc::scoped_refptr<webrtc::AudioTrackInterface>> _audioTracks;
         std::vector<rtc::scoped_refptr<webrtc::VideoTrackInterface>> _videoTracks;
+        std::vector<rtc::scoped_refptr<webrtc::RtpSenderInterface>> _senders;
     };
 
 } //namespace WeiRtc {
