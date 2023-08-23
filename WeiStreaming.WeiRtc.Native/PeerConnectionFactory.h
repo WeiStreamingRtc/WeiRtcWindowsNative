@@ -30,6 +30,9 @@ namespace WeiRtc {
             _webrtcPeerConnectionFactoryInterface;
         VideoTrackSource* _videoSource;
         VideoTrackSource* _desktopSource;
+
+        std::vector<rtc::scoped_refptr<webrtc::AudioTrackInterface>> _audioTracks;
+        std::vector<rtc::scoped_refptr<VideoTrackSource>> _videoTracks;
     };
 
 } //namespace WeiRtc {
