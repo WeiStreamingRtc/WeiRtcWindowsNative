@@ -35,12 +35,6 @@ PeerConnectionFactory::PeerConnectionFactory() {
 }
 
 PeerConnectionFactory::~PeerConnectionFactory() {
-
-    for (std::vector<rtc::scoped_refptr<VideoTrackSource>>::iterator t = _videoTracks.begin(); t != _videoTracks.end(); ++t) {
-        t->get()->Close();
-        t->release();       
-    }
-
     _workerThread.release();
     _networkThread.release();
     _signalingThread.release();
@@ -62,7 +56,6 @@ PeerConnectionFactory::CreateAudioTrack(const char* audioLabel) {
 
     // Hank need to figure out how to mute audio:
     // audioSrc.get()->kMuted
-    _audioTracks.push_back(audioTrack);
     return audioTrack;
 }
 rtc::scoped_refptr<webrtc::VideoTrackInterface>
@@ -74,8 +67,6 @@ PeerConnectionFactory::CreateVideoTrack(
         videoLabel, _videoSource);
 
     _videoSource->ConnectPip();
-
-    _videoTracks.push_back(_videoSource);
     return videoTrack;
 }
 
