@@ -141,4 +141,9 @@ It need a hosting of the netcore.
 https://learn.microsoft.com/en-ca/dotnet/core/tutorials/netcore-hosting
 https://github.com/dotnet/samples/tree/main/core/hosting
 
+#### Build openSSL and include for the websocket project.
+right now, just use no secure connection: "ws://localhost:8889/ws"
+
+
+
 

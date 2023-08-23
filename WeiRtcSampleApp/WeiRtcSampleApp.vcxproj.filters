@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DirectTcpServer.cpp" />
+    <ClCompile Include="SimpleTcpSignaling.cpp" />
+    <ClCompile Include="WeiRtcApp.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="ixwebsocket\IXBench.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXCancellationRequest.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXConnectionState.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXDNSLookup.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXExponentialBackoff.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXGetFreePort.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXGzipCodec.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXHttp.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXHttpClient.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXHttpServer.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXNetSystem.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSelectInterrupt.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSelectInterruptEvent.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSelectInterruptFactory.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSelectInterruptPipe.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSetThreadName.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocket.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocketAppleSSL.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocketConnect.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocketFactory.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocketMbedTLS.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocketOpenSSL.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocketServer.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXSocketTLSOptions.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXStrCaseCompare.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXUdpSocket.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXUrlParser.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXUserAgent.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXUuid.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocket.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketCloseConstants.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketHandshake.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketHttpHeaders.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketPerMessageDeflate.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketPerMessageDeflateCodec.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketPerMessageDeflateOptions.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketProxyServer.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketServer.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="ixwebsocket\IXWebSocketTransport.cpp">
+      <Filter>ixwebsocket</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DirectTcpServer.h" />
+    <ClInclude Include="SimpleTcpSignaling.h" />
+    <ClInclude Include="TcpChannelEventsHandler.h" />
+    <ClInclude Include="WeiRtcApp.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ixwebsocket\IXBase64.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXBench.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXCancellationRequest.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXConnectionState.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXDNSLookup.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXExponentialBackoff.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXGetFreePort.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXGzipCodec.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXHttp.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXHttpClient.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXHttpServer.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXNetSystem.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXProgressCallback.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSelectInterrupt.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSelectInterruptEvent.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSelectInterruptFactory.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSelectInterruptPipe.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSetThreadName.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocket.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocketAppleSSL.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocketConnect.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocketFactory.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocketMbedTLS.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocketOpenSSL.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocketServer.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXSocketTLSOptions.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXStrCaseCompare.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXUdpSocket.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXUniquePtr.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXUrlParser.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXUserAgent.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXUtf8Validator.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXUuid.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocket.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketCloseConstants.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketCloseInfo.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketErrorInfo.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketHandshake.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketHandshakeKeyGen.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketHttpHeaders.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketInitResult.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketMessage.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketMessageType.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketOpenInfo.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketPerMessageDeflate.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketPerMessageDeflateCodec.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketPerMessageDeflateOptions.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketProxyServer.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketSendData.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketSendInfo.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketServer.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketTransport.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="ixwebsocket\IXWebSocketVersion.h">
+      <Filter>ixwebsocket</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WeiRtcApp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\LockScreenLogo.scale-200.png" />
+    <Image Include="Assets\SplashScreen.scale-200.png" />
+    <Image Include="Assets\Square150x150Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Image Include="Assets\StoreLogo.png" />
+    <Image Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="App.idl" />
+    <Midl Include="WeiRtcApp.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-format" />
+    <None Include="packages.config" />
+    <None Include="PropertySheet.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="WeiRtcControl.xaml" />
+    <Page Include="MainPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ixwebsocket">
+      <UniqueIdentifier>{401ffd26-5f7c-426d-ae84-7b2fffd95e63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

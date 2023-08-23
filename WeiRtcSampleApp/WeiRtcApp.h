@@ -18,7 +18,6 @@ struct WeiRtcApp : WeiRtcAppT<WeiRtcApp> {
 
 private:
     Windows::UI::Xaml::UIElement* _screenPipCanvas;
-
 };
 }  // namespace
    // winrt::WeiRtcSampleApp::implementation 
