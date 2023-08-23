@@ -22,21 +22,8 @@ namespace WeiRtc {
     }
 
     void PeerConnection::Close() {
-        
-        //Remove all the tracks
-        for (std::vector<rtc::scoped_refptr<webrtc::RtpSenderInterface>>::iterator t = _senders.begin(); t != _senders.end(); ++t) {
-            _instance->RemoveTrack(*t);
-        }
-
-        for (std::vector<rtc::scoped_refptr<webrtc::VideoTrackInterface>>::iterator t = _videoTracks.begin(); t != _videoTracks.end(); ++t) {
-            t->release();
-        }
-
-        for (std::vector<rtc::scoped_refptr<webrtc::AudioTrackInterface>>::iterator t = _audioTracks.begin(); t != _audioTracks.end(); ++t) {
-            t->release();
-        }
-
-        _instance->Close();
+        //Hank: TODO: looks like that webrtc will never comeout of this function.
+        //_instance->Close();
     }
 
     //Hank: This is called by webrtc, since this class extends  webrtc::PeerConnectionObserver
@@ -71,7 +58,6 @@ namespace WeiRtc {
         PeerConnection::AddTrack(
             rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track,
             const std::vector<std::string>& stream_ids) {
-        
         return _instance->AddTrack(track, stream_ids);
     }
 
@@ -136,7 +122,6 @@ namespace WeiRtc {
         auto ret = AddTrack(track, { _streamId });
         assert(ret.ok());
 
-        _senders.push_back(ret.value());
         _audioTracks.push_back(track);
     }
     void PeerConnection::AddVideoTrack(MediaTypes::VideoSourceType type, winrt::Windows::UI::Xaml::UIElement pipCanvas) {
@@ -145,7 +130,6 @@ namespace WeiRtc {
 
         auto ret = AddTrack(track, { _streamId });
         assert(ret.ok());
-        _senders.push_back(ret.value());
         _videoTracks.push_back(track);
     }
 
