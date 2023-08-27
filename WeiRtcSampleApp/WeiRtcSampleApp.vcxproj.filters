@@ -125,10 +125,16 @@
       <Filter>ixwebsocket</Filter>
     </ClCompile>
     <ClCompile Include="tcpSignalling\DirectTcpServer.cpp">
-	  <Filter>tcpSignalling</Filter>
+      <Filter>tcpSignalling</Filter>
     </ClCompile>
     <ClCompile Include="tcpSignalling\SimpleTcpSignaling.cpp">
-	  <Filter>tcpSignalling</Filter>
+      <Filter>tcpSignalling</Filter>
+    </ClCompile>
+    <ClCompile Include="webSocketSignalling\SimpleWebSocketSignaling.cpp">
+      <Filter>webSocketSignalling</Filter>
+    </ClCompile>
+    <ClCompile Include="webSocketSignalling\SimpleWebSocketChannel.cpp">
+      <Filter>webSocketSignalling</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -295,13 +301,22 @@
       <Filter>ixwebsocket</Filter>
     </ClInclude>
     <ClInclude Include="tcpSignalling\DirectTcpServer.h">
-	  <Filter>tcpSignalling</Filter>
+      <Filter>tcpSignalling</Filter>
     </ClInclude>
     <ClInclude Include="tcpSignalling\SimpleTcpSignaling.h">
-	  <Filter>tcpSignalling</Filter>
+      <Filter>tcpSignalling</Filter>
     </ClInclude>
     <ClInclude Include="tcpSignalling\TcpChannelEventsHandler.h">
-	  <Filter>tcpSignalling</Filter>
+      <Filter>tcpSignalling</Filter>
+    </ClInclude>
+    <ClInclude Include="webSocketSignalling\SimpleWebSocketSignaling.h">
+      <Filter>webSocketSignalling</Filter>
+    </ClInclude>
+    <ClInclude Include="webSocketSignalling\WebSocketEventsHandler.h">
+      <Filter>webSocketSignalling</Filter>
+    </ClInclude>
+    <ClInclude Include="webSocketSignalling\SimpleWebSocketChannel.h">
+      <Filter>webSocketSignalling</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +353,9 @@
     </Filter>
     <Filter Include="tcpSignalling">
       <UniqueIdentifier>{3cc01e5e-54b6-4a17-a937-3e0ce2a24b77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="webSocketSignalling">
+      <UniqueIdentifier>{ab8c9a4c-249f-4020-8ed0-d52c06ecd4a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

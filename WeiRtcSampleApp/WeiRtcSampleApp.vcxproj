@@ -169,6 +169,9 @@
     <ClInclude Include="ixwebsocket\IXWebSocketVersion.h" />
     <ClInclude Include="tcpSignalling\SimpleTcpSignaling.h" />
     <ClInclude Include="tcpSignalling\TcpChannelEventsHandler.h" />
+    <ClInclude Include="webSocketSignalling\SimpleWebSocketChannel.h" />
+    <ClInclude Include="webSocketSignalling\SimpleWebSocketSignaling.h" />
+    <ClInclude Include="webSocketSignalling\WebSocketEventsHandler.h" />
     <ClInclude Include="WeiRtcApp.h" />
     <ClInclude Include="WeiRtcControl.h">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
@@ -209,6 +212,7 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SimpleWebSocketChannel.cpp" />
     <ClCompile Include="tcpSignalling\DirectTcpServer.cpp" />
     <ClCompile Include="ixwebsocket\IXBench.cpp" />
     <ClCompile Include="ixwebsocket\IXCancellationRequest.cpp" />
@@ -250,6 +254,7 @@
     <ClCompile Include="ixwebsocket\IXWebSocketServer.cpp" />
     <ClCompile Include="ixwebsocket\IXWebSocketTransport.cpp" />
     <ClCompile Include="tcpSignalling\SimpleTcpSignaling.cpp" />
+    <ClCompile Include="webSocketSignalling\SimpleWebSocketSignaling.cpp" />
     <ClCompile Include="WeiRtcApp.cpp" />
     <ClCompile Include="WeiRtcControl.cpp">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
