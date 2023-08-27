@@ -145,5 +145,15 @@ https://github.com/dotnet/samples/tree/main/core/hosting
 right now, just use no secure connection: "ws://localhost:8889/ws"
 
 
+### Steps to Init a git hub repo with existing local Repo
+https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github
+git checkout -b main
+//Create a repo at git hub first,  then get the url 
+git remote add origin <REMOTE_URL>
+//if remote has nothing, force push
+git push --force origin main
+
+
+
 
 

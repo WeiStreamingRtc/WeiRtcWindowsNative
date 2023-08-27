@@ -7,9 +7,9 @@
 #include <stddef.h>
 #include <memory>
 
-#include "DirectTcpServer.h"
-#include "SimpleTcpSignaling.h"
-#include "TcpChannelEventsHandler.h"
+#include "tcpSignalling/DirectTcpServer.h"
+#include "tcpSignalling/SimpleTcpSignaling.h"
+#include "tcpSignalling/TcpChannelEventsHandler.h"
 
 #include "WeiRtc.h"
 #include "CreateSessionDescriptionObserver.h"
@@ -234,8 +234,8 @@ Windows::Foundation::IAsyncAction WeiRtcApp::Init(
     //_sample->AddDesktopTrack(*_screenPipCanvas);
     
     // Call this at the as the last step
-    //_sample->StartSignalling();
-    _sample->StartWebSocket();
+    _sample->StartSignalling();
+    //_sample->StartWebSocket();
 }
 
 Windows::Foundation::IAsyncAction WeiRtcApp::StartDesktopCaptuer()

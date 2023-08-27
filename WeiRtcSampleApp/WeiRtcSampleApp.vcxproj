@@ -113,7 +113,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DirectTcpServer.h" />
+    <ClInclude Include="tcpSignalling\DirectTcpServer.h" />
     <ClInclude Include="ixwebsocket\IXBase64.h" />
     <ClInclude Include="ixwebsocket\IXBench.h" />
     <ClInclude Include="ixwebsocket\IXCancellationRequest.h" />
@@ -167,8 +167,8 @@
     <ClInclude Include="ixwebsocket\IXWebSocketServer.h" />
     <ClInclude Include="ixwebsocket\IXWebSocketTransport.h" />
     <ClInclude Include="ixwebsocket\IXWebSocketVersion.h" />
-    <ClInclude Include="SimpleTcpSignaling.h" />
-    <ClInclude Include="TcpChannelEventsHandler.h" />
+    <ClInclude Include="tcpSignalling\SimpleTcpSignaling.h" />
+    <ClInclude Include="tcpSignalling\TcpChannelEventsHandler.h" />
     <ClInclude Include="WeiRtcApp.h" />
     <ClInclude Include="WeiRtcControl.h">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
@@ -209,7 +209,7 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DirectTcpServer.cpp" />
+    <ClCompile Include="tcpSignalling\DirectTcpServer.cpp" />
     <ClCompile Include="ixwebsocket\IXBench.cpp" />
     <ClCompile Include="ixwebsocket\IXCancellationRequest.cpp" />
     <ClCompile Include="ixwebsocket\IXConnectionState.cpp" />
@@ -249,7 +249,7 @@
     <ClCompile Include="ixwebsocket\IXWebSocketProxyServer.cpp" />
     <ClCompile Include="ixwebsocket\IXWebSocketServer.cpp" />
     <ClCompile Include="ixwebsocket\IXWebSocketTransport.cpp" />
-    <ClCompile Include="SimpleTcpSignaling.cpp" />
+    <ClCompile Include="tcpSignalling\SimpleTcpSignaling.cpp" />
     <ClCompile Include="WeiRtcApp.cpp" />
     <ClCompile Include="WeiRtcControl.cpp">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
