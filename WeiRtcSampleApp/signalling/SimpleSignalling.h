@@ -28,4 +28,5 @@ public:
 private:
 	WeiRtc::PeerConnection* _peerConnection;
 	SignallingChannel* _channel;
+	std::string _clientId;
 };

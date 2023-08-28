@@ -6,7 +6,7 @@
 // clang-format on
 
 SimpleSignalling::SimpleSignalling()
-    : _channel(nullptr), _peerConnection(nullptr) {}
+    : _channel(nullptr), _clientId(""), _peerConnection(nullptr) {}
 SimpleSignalling::~SimpleSignalling() = default;
 
 void SimpleSignalling::RegisterPeerConnection(WeiRtc::PeerConnection* peerConnection) {
@@ -30,7 +30,7 @@ void SimpleSignalling::OnMessage(std::string message) {
             return;
         }
         // auto msg = winrt::Windows::Data::Json::JsonObject::Parse(winrt::to_hstring(message));
-        auto type = json_object.GetNamedString(L"type");
+        auto type = json_object.GetNamedString(L"Type");
 
         if (type == L"offer") {
             auto sdpString = json_object.GetNamedString(L"sdp");
@@ -57,6 +57,10 @@ void SimpleSignalling::OnMessage(std::string message) {
 
             return;
         }
+        if (type == L"Server") {
+            auto id = json_object.GetNamedString(L"Id");
+            _clientId = winrt::to_string(id);
+        }
 
     }
     catch (...) {
@@ -75,7 +79,7 @@ void SimpleSignalling::OnChannelOpen() {
     auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(
         winrt::to_hstring("Client Hello"));
 
-    j_msg.Insert(L"message", j_val);
+    j_msg.Insert(L"Message", j_val);
 
     _channel->Send((winrt::to_string(j_msg.ToString())));
 
@@ -94,7 +98,7 @@ void SimpleSignalling::SendCandidate(std::string candidate) {
     auto j_lable = winrt::Windows::Data::Json::JsonValue::CreateNumberValue(0);
     auto j_id = winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"0");
 
-    j_ice.Insert(L"type", j_type);
+    j_ice.Insert(L"Type", j_type);
     j_ice.Insert(L"label", j_lable);
     j_ice.Insert(L"id", j_id);
     j_ice.Insert(L"candidate", j_val);

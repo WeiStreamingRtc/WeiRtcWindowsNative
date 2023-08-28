@@ -53,7 +53,7 @@ struct PeerConnectionEventHandlerImpl : public WeiRtc::PeerConnectionEventHandle
         auto j_type =
             winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"answer");
         j_sdp.Insert(L"sdp", j_val);
-        j_sdp.Insert(L"type", j_type);
+        j_sdp.Insert(L"Type", j_type);
 
         _signaling->SendMessage((winrt::to_string(j_sdp.ToString())));
     }
