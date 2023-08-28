@@ -31,6 +31,7 @@ int SimpleWebSocketChannel::Start() {
             {
                 std::cout << "Connection established" << std::endl;
                 std::cout << "> " << std::flush;
+                _messageHandler->OnChannelOpen();
             }
             else if (msg->type == ix::WebSocketMessageType::Error)
             {

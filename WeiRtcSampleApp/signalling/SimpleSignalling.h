@@ -17,6 +17,7 @@ public:
 	virtual void StartSignalling();
 
 	void OnMessage(std::string message) override;
+	void OnChannelOpen() override;
 	void SendMessage(std::string message);
 
 	void SendOffer(winrt::hstring sdp) const {}

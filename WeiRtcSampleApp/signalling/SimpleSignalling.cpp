@@ -70,6 +70,16 @@ void SimpleSignalling::OnMessage(std::string message) {
     }
 }
 
+void SimpleSignalling::OnChannelOpen() {
+    winrt::Windows::Data::Json::JsonObject j_msg;
+    auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(
+        winrt::to_hstring("Client Hello"));
+
+    j_msg.Insert(L"message", j_val);
+
+    _channel->Send((winrt::to_string(j_msg.ToString())));
+
+}
 void SimpleSignalling::SendMessage(std::string message) {
     _channel->Send(message);
 }
