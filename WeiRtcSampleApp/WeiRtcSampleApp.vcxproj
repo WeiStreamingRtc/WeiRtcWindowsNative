@@ -113,6 +113,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="signalling\SignallingChannel.h" />
+    <ClInclude Include="signalling\SignallingChannelMessageHandler.h" />
+    <ClInclude Include="signalling\SimpleSignalling.h" />
     <ClInclude Include="tcpSignalling\DirectTcpServer.h" />
     <ClInclude Include="ixwebsocket\IXBase64.h" />
     <ClInclude Include="ixwebsocket\IXBench.h" />
@@ -168,7 +171,6 @@
     <ClInclude Include="ixwebsocket\IXWebSocketTransport.h" />
     <ClInclude Include="ixwebsocket\IXWebSocketVersion.h" />
     <ClInclude Include="tcpSignalling\SimpleTcpSignaling.h" />
-    <ClInclude Include="tcpSignalling\TcpChannelEventsHandler.h" />
     <ClInclude Include="webSocketSignalling\SimpleWebSocketChannel.h" />
     <ClInclude Include="webSocketSignalling\SimpleWebSocketSignaling.h" />
     <ClInclude Include="webSocketSignalling\WebSocketEventsHandler.h" />
@@ -212,6 +214,8 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="signalling\SignallingChannel.cpp" />
+    <ClCompile Include="signalling\SimpleSignalling.cpp" />
     <ClCompile Include="SimpleWebSocketChannel.cpp" />
     <ClCompile Include="tcpSignalling\DirectTcpServer.cpp" />
     <ClCompile Include="ixwebsocket\IXBench.cpp" />

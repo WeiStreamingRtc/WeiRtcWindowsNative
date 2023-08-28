@@ -133,8 +133,14 @@
     <ClCompile Include="webSocketSignalling\SimpleWebSocketSignaling.cpp">
       <Filter>webSocketSignalling</Filter>
     </ClCompile>
-    <ClCompile Include="webSocketSignalling\SimpleWebSocketChannel.cpp">
+    <ClCompile Include="SimpleWebSocketChannel.cpp">
       <Filter>webSocketSignalling</Filter>
+    </ClCompile>
+    <ClCompile Include="signalling\SimpleSignalling.cpp">
+      <Filter>signalling</Filter>
+    </ClCompile>
+    <ClCompile Include="signalling\SignallingChannel.cpp">
+      <Filter>signalling</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -306,9 +312,6 @@
     <ClInclude Include="tcpSignalling\SimpleTcpSignaling.h">
       <Filter>tcpSignalling</Filter>
     </ClInclude>
-    <ClInclude Include="tcpSignalling\TcpChannelEventsHandler.h">
-      <Filter>tcpSignalling</Filter>
-    </ClInclude>
     <ClInclude Include="webSocketSignalling\SimpleWebSocketSignaling.h">
       <Filter>webSocketSignalling</Filter>
     </ClInclude>
@@ -317,6 +320,15 @@
     </ClInclude>
     <ClInclude Include="webSocketSignalling\SimpleWebSocketChannel.h">
       <Filter>webSocketSignalling</Filter>
+    </ClInclude>
+    <ClInclude Include="signalling\SignallingChannelMessageHandler.h">
+      <Filter>signalling</Filter>
+    </ClInclude>
+    <ClInclude Include="signalling\SimpleSignalling.h">
+      <Filter>signalling</Filter>
+    </ClInclude>
+    <ClInclude Include="signalling\SignallingChannel.h">
+      <Filter>signalling</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -356,6 +368,9 @@
     </Filter>
     <Filter Include="webSocketSignalling">
       <UniqueIdentifier>{ab8c9a4c-249f-4020-8ed0-d52c06ecd4a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="signalling">
+      <UniqueIdentifier>{e1bed013-fd9f-4ef2-b337-3fd77e5ea2c3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

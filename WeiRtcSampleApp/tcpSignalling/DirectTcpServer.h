@@ -1,19 +1,17 @@
 #pragma once
 
 #include "WinSock2.h"
-#include "TcpChannelEventsHandler.h"
+#include "signalling\SignallingChannel.h"
 
-class DirectTcpServer {
+class DirectTcpServer : public SignallingChannel {
    public:
     DirectTcpServer(int port);
     ~DirectTcpServer();
-    int Start();
-    void RegisterMessageCallBack(TcpChannelEventsHandler* handler);
-    void Send(std::string message);
+    int Start() override;
+    void Send(std::string message) override;
 
    private:
     void ListeningLoop();
-    TcpChannelEventsHandler* _eventHandler;
 
    private:
     int _port;

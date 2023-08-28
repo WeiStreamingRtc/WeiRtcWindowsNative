@@ -106,7 +106,7 @@ int DirectTcpServer::Start() {
             // Hank, call the callback to set the sdp
             auto message = std::string((char *)recvbuf);
 
-            _eventHandler->OnTcpMessage(message);
+            _messageHandler->OnMessage(message);
 
             memset(recvbuf, 0, DEFAULT_BUFLEN);
 
@@ -143,12 +143,11 @@ int DirectTcpServer::Start() {
 
     // cleanup
     closesocket(_clientSocket);
-    WSACleanup();
-}
-
-void DirectTcpServer::RegisterMessageCallBack(
-    TcpChannelEventsHandler *handler) {
-    this->_eventHandler = handler;
+    
+    
+    //Hank:  do not do this, it might cause exception of libwebrtc, do this at the very last step of the whole
+    //  application -- when peer connection is completely shutdown
+    //WSACleanup();
 }
 
 void DirectTcpServer::Send(std::string message) {

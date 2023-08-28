@@ -9,7 +9,6 @@
 
 #include "tcpSignalling/DirectTcpServer.h"
 #include "tcpSignalling/SimpleTcpSignaling.h"
-#include "tcpSignalling/TcpChannelEventsHandler.h"
 
 #include "WeiRtc.h"
 #include "CreateSessionDescriptionObserver.h"
@@ -230,8 +229,8 @@ Windows::Foundation::IAsyncAction WeiRtcApp::Init(
     _sample->CreatePeerConnection(canvas);
 
     _sample->AddAudioTrack();
-    _sample->AddVideoTrack(pipCanvas);
-    //_sample->AddDesktopTrack(*_screenPipCanvas);
+    //_sample->AddVideoTrack(pipCanvas);
+    _sample->AddDesktopTrack(*_screenPipCanvas);
     
     // Call this at the as the last step
     _sample->StartSignalling();
