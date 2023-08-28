@@ -9,6 +9,8 @@
 
 #include "tcpSignalling/DirectTcpServer.h"
 #include "tcpSignalling/SimpleTcpSignaling.h"
+#include "webSocketSignalling/SimpleWebSocketSignaling.h"
+#include "signalling/SimpleSignalling.h"
 
 #include "WeiRtc.h"
 #include "CreateSessionDescriptionObserver.h"
@@ -35,9 +37,9 @@ struct PeerConnectionOwner {
 };
 
 struct PeerConnectionEventHandlerImpl : public WeiRtc::PeerConnectionEventHandler {
-    SimpleTcpSignaling* _signaling;
+    SimpleSignalling* _signaling;
     PeerConnectionOwner* _owner;
-    PeerConnectionEventHandlerImpl(SimpleTcpSignaling* signaling,
+    PeerConnectionEventHandlerImpl(SimpleSignalling* signaling,
                                    PeerConnectionOwner* owner)
         : _signaling(signaling), _owner(owner) {}
 
@@ -90,7 +92,8 @@ struct WebRtcSample : public PeerConnectionOwner {
     const char* _videoLabel = "video_label";
 
 
-    SimpleTcpSignaling _signaling;
+    //Hank Tcp: SimpleTcpSignaling _signaling;
+    SimpleWebSocketSignaling _signaling;
 
     PeerConnectionEventHandlerImpl _eventHandler =
         PeerConnectionEventHandlerImpl(&_signaling, this);
@@ -98,7 +101,9 @@ struct WebRtcSample : public PeerConnectionOwner {
     WeiRtc::PeerConnectionFactory* _peerConnectionFactory = new WeiRtc::PeerConnectionFactory();
 
     std::unique_ptr<WeiRtc::PeerConnection> _pc;
-    WebRtcSample(winrt::hstring room) : _signaling() {}
+    
+    //Hank Tcp: WebRtcSample(winrt::hstring room) : _signaling() {}
+    WebRtcSample(winrt::hstring room) : _signaling("ws://localhost:8889/ws") {}
 
     void CreatePeerConnection(winrt::Windows::UI::Xaml::UIElement canvas) {
         webrtc::PeerConnectionInterface::RTCConfiguration config;

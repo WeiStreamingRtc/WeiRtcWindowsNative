@@ -1,19 +1,17 @@
 #pragma once
 
 #include "WinSock2.h"
-#include "webSocketSignalling\WebSocketEventsHandler.h"
+#include "signalling\SignallingChannel.h"
 #include "ixwebsocket/IXWebSocket.h"
 
-class SimpleWebSocketChannel {
+class SimpleWebSocketChannel : public SignallingChannel {
    public:
     SimpleWebSocketChannel(std::string url);
     ~SimpleWebSocketChannel();
-    int Start();
-    void RegisterMessageCallBack(WebSocketEventsHandler* handler);
-    void Send(std::string message);
+    int Start() override;
+    void Send(std::string message) override;
 
    private:
     std::string _url;
     ix::WebSocket _webSocket;
-    WebSocketEventsHandler* _eventHandler;
 };

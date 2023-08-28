@@ -3,26 +3,18 @@
 // clang-format off
 #include "pch.h"
 #include "PeerConnection.h"
-#include "webSocketSignalling\WebSocketEventsHandler.h"
+#include "signalling\SimpleSignalling.h"
 #include "webSocketSignalling\SimpleWebSocketChannel.h"
 
 // clang-format on
 
-class WEI_EXPORT SimpleWebSocketSignaling : public WebSocketEventsHandler {
+class WEI_EXPORT SimpleWebSocketSignaling : public SimpleSignalling {
 public:
 	SimpleWebSocketSignaling(std::string url);
 	~SimpleWebSocketSignaling();
 
-	void RegisterPeerConnection(WeiRtc::PeerConnection* peerConnection);
-	void StartSignalling();
+	void StartSignalling() override;
 
-	void OnWebSocketMessage(std::string message) override;
-	void SendMessage(std::string message);
-
-	void SendOffer(winrt::hstring sdp) const {}
-	void SendCandidate(std::string candidate);
-
-private:
-	WeiRtc::PeerConnection* _peerConnection;
+private:	
 	SimpleWebSocketChannel _signallingChannel;
 };
