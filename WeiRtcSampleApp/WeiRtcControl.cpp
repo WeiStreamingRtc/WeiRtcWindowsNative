@@ -17,20 +17,29 @@ hstring WeiRtcControl::IpAddress() { return clazz.Room(); }
 
 void WeiRtcControl::IpAddress(hstring value) {}
 
-void WeiRtcControl::Start(hstring value) { clazz.Init(Canvas(), pipCanvas(), screenCaptureCanvas(), value); }
+void WeiRtcControl::Start(hstring value) {
+    clazz.Init(Canvas(), pipCanvas(), screenCaptureCanvas(), value);
+}
 
 void WeiRtcControl::WeiRTCButton_Click(
     Windows::Foundation::IInspectable const& /*sender*/,
     Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {}
 
-
 void WeiRtcControl::ScreenShare_Click(
     Windows::Foundation::IInspectable const& /*sender*/,
     Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {
-    
     clazz.StartDesktopCaptuer();
-
 }
 
-}// namespace
+void WeiRtcControl::SupportRequest_Click(
+    Windows::Foundation::IInspectable const& /*sender*/,
+    Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {
+
+    Windows::UI::Xaml::Controls::TextBox textBox = SupportDesc();
+
+    winrt::hstring msg = textBox.Text();
+    clazz.CallSupport(msg);
+}
+
+}  // namespace winrt::WeiRtcSampleApp::implementation
    // winrt::WeiRtcSampleApp::::implementation

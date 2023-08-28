@@ -140,6 +140,9 @@ struct WebRtcSample : public PeerConnectionOwner {
         delete _peerConnectionFactory;
     }
 
+    void CallSupport(hstring msg) {
+        _signaling.CallSupport(msg);
+    }
     void StartWebSocket() {
         // Required on Windows
         ix::initNetSystem();
@@ -248,6 +251,10 @@ Windows::Foundation::IAsyncAction WeiRtcApp::StartDesktopCaptuer()
     _sample->AddDesktopTrack(*_screenPipCanvas);
 }
 
+void WeiRtcApp::CallSupport(hstring msg)
+{
+    _sample->CallSupport(msg);
+}
 
 
 }  // namespace winrt::WeiRtcSampleApp::implementation

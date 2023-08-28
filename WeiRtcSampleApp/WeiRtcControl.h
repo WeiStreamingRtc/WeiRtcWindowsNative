@@ -23,6 +23,9 @@ struct WeiRtcControl : WeiRtcControlT<WeiRtcControl> {
     void ScreenShare_Click(Windows::Foundation::IInspectable const& sender,
         Windows::UI::Xaml::RoutedEventArgs const& e);
 
+    void SupportRequest_Click(Windows::Foundation::IInspectable const& sender,
+        Windows::UI::Xaml::RoutedEventArgs const& e);
+
 };
 }  // namespace
    // winrt::WeiStreaming::WeiRtc::Native::implementation

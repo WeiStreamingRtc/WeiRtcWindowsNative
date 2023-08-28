@@ -8,5 +8,6 @@ namespace WeiRtcSampleApp
 	  Windows.Foundation.IAsyncAction Init(Windows.UI.Xaml.UIElement canvas, Windows.UI.Xaml.UIElement pipCanvas, 
 		  Windows.UI.Xaml.UIElement screenPipCanvas, String room);
 	  Windows.Foundation.IAsyncAction StartDesktopCaptuer();
+	  void CallSupport(String msg);
 	}
 }

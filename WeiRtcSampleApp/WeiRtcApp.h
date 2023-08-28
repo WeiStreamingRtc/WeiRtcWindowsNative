@@ -16,6 +16,8 @@ struct WeiRtcApp : WeiRtcAppT<WeiRtcApp> {
         Windows::UI::Xaml::UIElement canvas, Windows::UI::Xaml::UIElement pipCanvas, Windows::UI::Xaml::UIElement screenPipCanvas, hstring room);
     Windows::Foundation::IAsyncAction StartDesktopCaptuer();
 
+    void CallSupport(hstring msg);
+
 private:
     Windows::UI::Xaml::UIElement* _screenPipCanvas;
 };

@@ -60,6 +60,8 @@ void SimpleSignalling::OnMessage(std::string message) {
         if (type == L"Server") {
             auto id = json_object.GetNamedString(L"Id");
             _clientId = winrt::to_string(id);
+
+            return;
         }
 
     }
@@ -76,6 +78,12 @@ void SimpleSignalling::OnMessage(std::string message) {
 
 void SimpleSignalling::OnChannelOpen() {
     winrt::Windows::Data::Json::JsonObject j_msg;
+
+    auto j_type = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring("ClientHello"));
+   // auto j_type = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring("AgentHello"));
+
+    j_msg.Insert(L"Type", j_type);
+
     auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(
         winrt::to_hstring("Client Hello"));
 
@@ -108,4 +116,27 @@ void SimpleSignalling::SendCandidate(std::string candidate) {
 
 void SimpleSignalling::SetSignallingChannel(SignallingChannel* channel) {
     this->_channel = channel;
+}
+
+void SimpleSignalling::CallSupport(winrt::hstring msg) {
+    
+    winrt::Windows::Data::Json::JsonObject j_msg;
+
+    auto j_type = winrt::Windows::Data::Json::JsonValue::CreateStringValue(
+        winrt::to_hstring("Request"));
+
+    j_msg.Insert(L"Type", j_type);
+
+    auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(msg);
+
+    j_msg.Insert(L"SupportMessage", j_val);
+
+    auto j_id = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(_clientId));
+
+    j_msg.Insert(L"Src", j_id);
+
+    _channel->Send((winrt::to_string(j_msg.ToString())));
+}
+std::string SimpleSignalling::GetClientId() {
+    return _clientId;
 }

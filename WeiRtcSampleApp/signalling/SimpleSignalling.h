@@ -25,6 +25,10 @@ public:
 
 	void SetSignallingChannel(SignallingChannel* channel);
 
+	void CallSupport(winrt::hstring msg);
+
+	std::string GetClientId();
+
 private:
 	WeiRtc::PeerConnection* _peerConnection;
 	SignallingChannel* _channel;
