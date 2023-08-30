@@ -103,7 +103,7 @@ struct WebRtcSample : public PeerConnectionOwner {
     std::unique_ptr<WeiRtc::PeerConnection> _pc;
     
     //Hank Tcp: WebRtcSample(winrt::hstring room) : _signaling() {}
-    WebRtcSample(winrt::hstring room) : _signaling("ws://localhost:8889/ws") {}
+    WebRtcSample(winrt::hstring room) : _signaling("ws://192.168.0.100:8889/ws") {}
 
     void CreatePeerConnection(winrt::Windows::UI::Xaml::UIElement canvas) {
         webrtc::PeerConnectionInterface::RTCConfiguration config;
