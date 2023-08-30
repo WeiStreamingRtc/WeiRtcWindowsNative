@@ -46,16 +46,18 @@ struct PeerConnectionEventHandlerImpl : public WeiRtc::PeerConnectionEventHandle
     void OnSdpCreated(const WeiRtc::SessionDescription& sdp) override {
         // Send the sdp
         std::string sdpStr = sdp.GetSdpAsString();
+        
+        /*
         winrt::Windows::Data::Json::JsonObject j_sdp;
 
-        auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(
-            winrt::to_hstring(sdpStr));
-        auto j_type =
-            winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"answer");
+        auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(sdpStr));
+        auto j_type = winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"answer");
         j_sdp.Insert(L"sdp", j_val);
         j_sdp.Insert(L"Type", j_type);
 
         _signaling->SendMessage((winrt::to_string(j_sdp.ToString())));
+        */
+        _signaling->SendAnswer(sdpStr);
     }
     void OnSdpCreationFailed(const char* msg) override {}
 

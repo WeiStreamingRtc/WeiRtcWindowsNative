@@ -21,6 +21,9 @@ public:
 	void SendMessage(std::string message);
 
 	void SendOffer(winrt::hstring sdp) const {}
+	
+	void SendAnswer(std::string sdpStr);
+	
 	void SendCandidate(std::string candidate);
 
 	void SetSignallingChannel(SignallingChannel* channel);
@@ -28,9 +31,11 @@ public:
 	void CallSupport(winrt::hstring msg);
 
 	std::string GetClientId();
+	std::string GetDestId();
 
 private:
 	WeiRtc::PeerConnection* _peerConnection;
 	SignallingChannel* _channel;
 	std::string _clientId;
+	std::string _destId;
 };

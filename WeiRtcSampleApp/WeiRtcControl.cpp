@@ -36,9 +36,14 @@ void WeiRtcControl::SupportRequest_Click(
     Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {
 
     Windows::UI::Xaml::Controls::TextBox textBox = SupportDesc();
+    Windows::UI::Xaml::Controls::ProgressRing ring = ProgressRing();
+    Windows::UI::Xaml::Controls::AppBarButton btn = SupportRequest();
 
     winrt::hstring msg = textBox.Text();
+    textBox.Text(L"");
     clazz.CallSupport(msg);
+    ring.IsActive(true);
+    btn.IsEnabled(false);
 }
 
 }  // namespace winrt::WeiRtcSampleApp::implementation

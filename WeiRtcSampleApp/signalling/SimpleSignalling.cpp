@@ -33,6 +33,8 @@ void SimpleSignalling::OnMessage(std::string message) {
         auto type = json_object.GetNamedString(L"Type");
 
         if (type == L"offer") {
+            auto src = json_object.GetNamedString(L"src");
+            this->_destId = winrt::to_string(src);
             auto sdpString = json_object.GetNamedString(L"sdp");
 
             // Set remote sdp, then create answer, if not initiator
@@ -96,22 +98,55 @@ void SimpleSignalling::SendMessage(std::string message) {
     _channel->Send(message);
 }
 
+void SimpleSignalling::SendAnswer(std::string sdpStr) {
+    winrt::Windows::Data::Json::JsonObject j_sdp;
+
+    auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(sdpStr));
+    auto j_type = winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"answer");
+    auto j_src = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(_clientId));
+    auto j_dest = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(_destId));
+
+    j_sdp.Insert(L"sdp", j_val);
+    j_sdp.Insert(L"Type", j_type);
+    j_sdp.Insert(L"src", j_src);
+    j_sdp.Insert(L"dest", j_dest);
+
+    winrt::Windows::Data::Json::JsonObject j_call;
+    auto j_callType = winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"Call");
+    auto j_callMsg = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(j_sdp.ToString()));
+    
+    j_call.Insert(L"Type", j_callType);
+    j_call.Insert(L"Message", j_callMsg);
+
+    _channel->Send((winrt::to_string(j_call.ToString())));
+
+}
 void SimpleSignalling::SendCandidate(std::string candidate) {
     winrt::Windows::Data::Json::JsonObject j_ice;
 
     auto j_val = winrt::Windows::Data::Json::JsonValue::CreateStringValue(
         winrt::to_hstring(candidate));
-    auto j_type =
-        winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"candidate");
+    auto j_type = winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"candidate");
     auto j_lable = winrt::Windows::Data::Json::JsonValue::CreateNumberValue(0);
     auto j_id = winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"0");
+    auto j_src = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(_clientId));
+    auto j_dest = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(_destId));
 
     j_ice.Insert(L"Type", j_type);
     j_ice.Insert(L"label", j_lable);
     j_ice.Insert(L"id", j_id);
     j_ice.Insert(L"candidate", j_val);
+    j_ice.Insert(L"src", j_src);
+    j_ice.Insert(L"dest", j_dest);
 
-    _channel->Send((winrt::to_string(j_ice.ToString())));
+    winrt::Windows::Data::Json::JsonObject j_call;
+    auto j_callType = winrt::Windows::Data::Json::JsonValue::CreateStringValue(L"Call");
+    auto j_callMsg = winrt::Windows::Data::Json::JsonValue::CreateStringValue(winrt::to_hstring(j_ice.ToString()));
+
+    j_call.Insert(L"Type", j_callType);
+    j_call.Insert(L"Message", j_callMsg);
+
+    _channel->Send((winrt::to_string(j_call.ToString())));
 }
 
 void SimpleSignalling::SetSignallingChannel(SignallingChannel* channel) {
@@ -139,4 +174,7 @@ void SimpleSignalling::CallSupport(winrt::hstring msg) {
 }
 std::string SimpleSignalling::GetClientId() {
     return _clientId;
+}
+std::string SimpleSignalling::GetDestId() {
+    return _destId;
 }

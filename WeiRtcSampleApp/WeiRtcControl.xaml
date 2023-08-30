@@ -27,14 +27,13 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <ProgressRing IsActive="True" Width="80" Height="80" Margin="0,40" />
+            <ProgressRing x:Name="ProgressRing"   IsActive="False" Width="80" Height="80" Margin="0,40" />
 
-            <TextBlock FontSize="16">Running as tcp server at port 8888, listenting for peer to connect...</TextBlock>
+            <TextBlock FontSize="20" Text="Type your issue below..."/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,50,0,50">
 
-            <TextBlock FontSize="20" Text="Type your issues below..."/>
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
-
-                <TextBox x:Name="SupportDesc"  Header="Problems:" PlaceholderText="Type your problems here" Width="500" HorizontalAlignment="Left"
+                <TextBox x:Name="SupportDesc"  Header="Your Problems:" PlaceholderText="Type your problems here" Width="700" Height="300" HorizontalAlignment="Left"
                          TextWrapping="Wrap"/>
 
             </StackPanel>
