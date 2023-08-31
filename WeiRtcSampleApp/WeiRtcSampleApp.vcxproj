@@ -113,6 +113,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CallPage.h">
+      <DependentUpon>CallPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="signalling\SignallingChannel.h" />
     <ClInclude Include="signalling\SignallingChannelMessageHandler.h" />
     <ClInclude Include="signalling\SimpleSignalling.h" />
@@ -174,6 +178,9 @@
     <ClInclude Include="webSocketSignalling\SimpleWebSocketChannel.h" />
     <ClInclude Include="webSocketSignalling\SimpleWebSocketSignaling.h" />
     <ClInclude Include="WeiRtcApp.h" />
+    <ClInclude Include="WeiRtcCall.h">
+      <DependentUpon>WeiRtcCall.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="WeiRtcControl.h">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
     </ClInclude>
@@ -190,6 +197,10 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CallPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WeiRtcCall.xaml" />
     <Page Include="WeiRtcControl.xaml" />
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
@@ -213,6 +224,10 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CallPage.cpp">
+      <DependentUpon>CallPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="signalling\SignallingChannel.cpp" />
     <ClCompile Include="signalling\SimpleSignalling.cpp" />
     <ClCompile Include="tcpSignalling\DirectTcpServer.cpp" />
@@ -259,6 +274,9 @@
     <ClCompile Include="webSocketSignalling\SimpleWebSocketSignaling.cpp" />
     <ClCompile Include="webSocketSignalling\SimpleWebSocketChannel.cpp" />
     <ClCompile Include="WeiRtcApp.cpp" />
+    <ClCompile Include="WeiRtcCall.cpp">
+      <DependentUpon>WeiRtcCall.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="WeiRtcControl.cpp">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
     </ClCompile>
@@ -275,6 +293,15 @@
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
+    <Midl Include="CallPage.idl">
+      <DependentUpon>CallPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="WeiRtcCall.idl">
+      <DependentUpon>WeiRtcCall.xaml</DependentUpon>
+      <FileType>Midl</FileType>
+      <DeploymentContent>false</DeploymentContent>
+    </Midl>
     <Midl Include="WeiRtcControl.idl">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
       <FileType>Midl</FileType>

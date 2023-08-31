@@ -29,16 +29,6 @@
 
             <ProgressRing x:Name="ProgressRing"   IsActive="False" Width="80" Height="80" Margin="0,40" />
 
-            <TextBlock x:Name="SupportTitle" FontSize="20" Text="Type your issue below..."/>
-            
-            <StackPanel Orientation="Horizontal" Margin="0,50,0,50">
-
-                <TextBox x:Name="SupportDesc"  Header="Your Problems:" PlaceholderText="Type your problems here" Width="700" Height="300" HorizontalAlignment="Left"
-                         TextWrapping="Wrap"/>
-
-            </StackPanel>
-            <TextBlock x:Name="greetingOutput"/>
-
         </StackPanel>
         
 
@@ -47,9 +37,7 @@
                 <AppBarButton x:Name="ScreenShareButton" Click="ScreenShare_Click" Icon="Account" Label="ScreenShare" />
             </CommandBar>
 
-            <CommandBar DefaultLabelPosition="Right" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,10">
-                <AppBarButton x:Name="SupportRequest" Click="SupportRequest_Click" Icon="Account" Label="Call Support"  />
-            </CommandBar>
         </Grid>
     </Grid>
+
 </UserControl>

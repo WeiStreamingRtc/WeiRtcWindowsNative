@@ -355,6 +355,7 @@
   <ItemGroup>
     <Page Include="WeiRtcControl.xaml" />
     <Page Include="MainPage.xaml" />
+	<Page Include="WeiRtcCall.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ixwebsocket">

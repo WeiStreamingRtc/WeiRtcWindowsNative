@@ -1,0 +1,9 @@
+namespace WeiRtcSampleApp
+{
+    [default_interface]
+    runtimeclass WeiRtcCall : Windows.UI.Xaml.Controls.UserControl
+    {
+        WeiRtcCall();
+        void Start(String msg);
+    }
+}

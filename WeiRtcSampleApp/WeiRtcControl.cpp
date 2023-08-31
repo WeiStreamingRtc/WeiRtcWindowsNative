@@ -6,6 +6,9 @@
 
 using namespace winrt;
 using namespace Windows::UI::Xaml;
+using namespace Windows::Foundation;
+using namespace Windows::UI::Xaml::Controls;
+using namespace Windows::UI::Xaml::Navigation;
 
 namespace winrt::WeiRtcSampleApp::implementation {
 WeiRtcControl::WeiRtcControl(){
@@ -21,13 +24,9 @@ void WeiRtcControl::Start(hstring value) {
     clazz.Init(Canvas(), pipCanvas(), screenCaptureCanvas(), value);
     clazz.RegisterAppObserver(this);
 
-    _textBox = SupportDesc();
-    _requestBtn = SupportRequest();
-    _titleBlock = SupportTitle();
     _ring = ProgressRing();
-    _canvas = &Canvas();
-
-//    _mainBrush = new Windows::UI::Xaml::Media::SolidColorBrush(Windows::UI::Colors::BlanchedAlmond());
+    //_canvas = &Canvas();
+    //_mainBrush = new Windows::UI::Xaml::Media::SolidColorBrush(Windows::UI::Colors::BlanchedAlmond());
 }
 
 void WeiRtcControl::WeiRTCButton_Click(
@@ -37,12 +36,14 @@ void WeiRtcControl::WeiRTCButton_Click(
 void WeiRtcControl::ScreenShare_Click(
     Windows::Foundation::IInspectable const& /*sender*/,
     Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {
+    
     clazz.StartDesktopCaptuer();
 }
 
+/*Hank
 void WeiRtcControl::SupportRequest_Click(
-    Windows::Foundation::IInspectable const& /*sender*/,
-    Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {
+    Windows::Foundation::IInspectable const& ,
+    Windows::UI::Xaml::RoutedEventArgs const& ) {
 
     winrt::hstring msg = _textBox.Text();
     _textBox.Text(L"");
@@ -55,7 +56,7 @@ void WeiRtcControl::SupportRequest_Click(
     _textBox.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
     _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
 }
-
+*/
 void WeiRtcControl::OnPeerConnectionStatus(int status)
 {
 
@@ -67,6 +68,7 @@ void WeiRtcControl::OnPeerConnectionStatus(int status)
 
     }
     else {
+        /*Hank
         _requestBtn.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
             {
                 _requestBtn.IsEnabled(true);
@@ -83,7 +85,7 @@ void WeiRtcControl::OnPeerConnectionStatus(int status)
                 _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Visible);
 
             }));
-        /*_canvas->Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+        _canvas->Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
             {
                 _canvas->Background(*_mainBrush);                
             }));
@@ -93,6 +95,7 @@ void WeiRtcControl::OnPeerConnectionStatus(int status)
 }
 void WeiRtcControl::OnSignallingChannelStatus(int status)
 {
+    /*
     if (status == 1) {
         _requestBtn.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
             {
@@ -107,6 +110,7 @@ void WeiRtcControl::OnSignallingChannelStatus(int status)
 
             }));
     }
+    */
 }
 
 

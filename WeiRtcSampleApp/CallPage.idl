@@ -1,0 +1,8 @@
+namespace WeiRtcSampleApp
+{
+    [default_interface]
+    runtimeclass CallPage : Windows.UI.Xaml.Controls.Page
+    {
+        CallPage();
+    }
+}
