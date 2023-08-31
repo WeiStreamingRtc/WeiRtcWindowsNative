@@ -1,5 +1,10 @@
 ﻿#pragma once
 
+struct WeiRtcAppObserver {
+    virtual void OnPeerConnectionStatus(int status) = 0;
+    virtual void OnSignallingChannelStatus(int status) = 0;
+};
+
 struct WeiRtcApp {
     struct WebRtcSample* _sample = nullptr;
 
@@ -15,6 +20,9 @@ struct WeiRtcApp {
 
     void CallSupport(winrt::hstring msg);
 
+    void RegisterAppObserver(WeiRtcAppObserver* observer);
+
 private:
     winrt::Windows::UI::Xaml::UIElement* _screenPipCanvas;
+    WeiRtcAppObserver* _observer;
 };

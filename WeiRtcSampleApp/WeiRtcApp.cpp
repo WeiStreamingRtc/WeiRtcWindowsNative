@@ -32,6 +32,7 @@
 
 struct PeerConnectionOwner {
     virtual void OnPeerConnectionDropped() = 0;
+    virtual void OnPeerConnectionEstablished() = 0;
 };
 
 struct PeerConnectionEventHandlerImpl : public WeiRtc::PeerConnectionEventHandler {
@@ -78,9 +79,11 @@ struct PeerConnectionEventHandlerImpl : public WeiRtc::PeerConnectionEventHandle
 
     void OnStandardizedIceConnectionChange(
         WeiRtc::PeerConnectionStates::IceConnectionState state) override {
-        if (state ==
-            WeiRtc::PeerConnectionStates::IceConnectionState::kIceConnectionFailed) {
+        if (state == WeiRtc::PeerConnectionStates::IceConnectionState::kIceConnectionFailed) {
             _owner->OnPeerConnectionDropped();
+        }
+        else if (state == WeiRtc::PeerConnectionStates::IceConnectionState::kIceConnectionConnected) {
+            _owner->OnPeerConnectionEstablished();
         }
     }
     void OnConnectionChange(
@@ -91,7 +94,7 @@ struct WebRtcSample : public PeerConnectionOwner {
     const char* _audioLabel = "audio_label";
     const char* _videoLabel = "video_label";
 
-
+    WeiRtcAppObserver* _observer;
     //Hank Tcp: SimpleTcpSignaling _signaling;
     SimpleWebSocketSignaling _signaling;
 
@@ -138,73 +141,23 @@ struct WebRtcSample : public PeerConnectionOwner {
 
         _pc.get()->Close();
         delete _peerConnectionFactory;
+
+        if (_observer != nullptr) _observer->OnPeerConnectionStatus(0);
+    }
+
+    void OnPeerConnectionEstablished() {
+        if (_observer != nullptr) _observer->OnPeerConnectionStatus(1);
     }
 
     void CallSupport(winrt::hstring msg) {
         _signaling.CallSupport(msg);
     }
-    void StartWebSocket() {
-        // Required on Windows
-        ix::initNetSystem();
 
-        // Our websocket object
-        ix::WebSocket webSocket;
-
-        // Connect to a server with encryption
-        // See https://machinezone.github.io/IXWebSocket/usage/#tls-support-and-configuration
-        //     https://github.com/machinezone/IXWebSocket/issues/386#issuecomment-1105235227 (self signed certificates)
-        std::string url("ws://localhost:8889/ws");
-        webSocket.setUrl(url);
-
-        std::cout << "Connecting to " << url << "..." << std::endl;
-
-        // Setup a callback to be fired (in a background thread, watch out for race conditions !)
-        // when a message or an event (open, close, error) is received
-        webSocket.setOnMessageCallback([](const ix::WebSocketMessagePtr& msg)
-            {
-                if (msg->type == ix::WebSocketMessageType::Message)
-                {
-                    std::cout << "received message: " << msg->str << std::endl;
-                    std::cout << "> " << std::flush;
-                }
-                else if (msg->type == ix::WebSocketMessageType::Open)
-                {
-                    std::cout << "Connection established" << std::endl;
-                    std::cout << "> " << std::flush;
-                }
-                else if (msg->type == ix::WebSocketMessageType::Error)
-                {
-                    // Maybe SSL is not configured properly
-                    std::cout << "Connection error: " << msg->errorInfo.reason << std::endl;
-                    std::cout << "> " << std::flush;
-                }
-            }
-        );
-
-        // Now that our callback is setup, we can start our background thread and receive messages
-        webSocket.start();
-
-        // Send a message to the server (default to TEXT mode)
-        webSocket.send("hello world");
-
-        // Display a prompt
-        std::cout << "> " << std::flush;
-
-        std::string text;
-        // Read text from the console and send messages in text mode.
-        // Exit with Ctrl-D on Unix or Ctrl-Z on Windows.
-        int n = 0;
-        char* buffer = new char[100];
-
-        while (true)
-        {
-            n++;
-            Sleep(100);
-            sprintf(buffer,"test %d", n);
-            webSocket.send(buffer);
-            std::cout << "> " << std::flush;
-        }
+    void SetAppObserver(WeiRtcAppObserver* ob)
+    {
+        _observer = ob;
     }
+
 };
 
 WeiRtcApp::WeiRtcApp() { WeiRtc::InitializeWeiRtc(); }
@@ -243,6 +196,7 @@ winrt::Windows::Foundation::IAsyncAction WeiRtcApp::Init(
     // Call this at the as the last step
     _sample->StartSignalling();
     //_sample->StartWebSocket();
+    _sample->SetAppObserver(_observer);
 }
 
 winrt::Windows::Foundation::IAsyncAction WeiRtcApp::StartDesktopCaptuer()
@@ -254,4 +208,9 @@ winrt::Windows::Foundation::IAsyncAction WeiRtcApp::StartDesktopCaptuer()
 void WeiRtcApp::CallSupport(winrt::hstring msg)
 {
     _sample->CallSupport(msg);
+}
+
+void WeiRtcApp::RegisterAppObserver(WeiRtcAppObserver* observer)
+{
+    _observer = observer;
 }
