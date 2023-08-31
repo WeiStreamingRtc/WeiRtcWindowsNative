@@ -276,11 +276,6 @@
   <ItemGroup>
     <Midl Include="App.idl" />
     <Midl Include="WeiRtcApp.idl" />
-    <Midl Include="WeiRtcControl.idl">
-      <DependentUpon>WeiRtcControl.xaml</DependentUpon>
-      <FileType>Midl</FileType>
-      <DeploymentContent>false</DeploymentContent>
-    </Midl>
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
       <FileType>Midl</FileType>
