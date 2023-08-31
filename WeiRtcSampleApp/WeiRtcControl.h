@@ -36,6 +36,9 @@ private:
     Windows::UI::Xaml::Controls::AppBarButton _requestBtn;
     Windows::UI::Xaml::Controls::TextBlock _titleBlock;
 
+    winrt::Windows::UI::Xaml::Controls::Canvas* _canvas;
+    Windows::UI::Xaml::Media::Brush* _mainBrush;
+
 };
 }  // namespace
    // winrt::WeiStreaming::WeiRtc::Native::implementation

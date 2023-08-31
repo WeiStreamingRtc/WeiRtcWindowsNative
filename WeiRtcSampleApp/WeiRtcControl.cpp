@@ -8,7 +8,7 @@ using namespace winrt;
 using namespace Windows::UI::Xaml;
 
 namespace winrt::WeiRtcSampleApp::implementation {
-WeiRtcControl::WeiRtcControl() {
+WeiRtcControl::WeiRtcControl(){
     InitializeComponent();
     clazz = WeiRtcApp();
 }
@@ -20,6 +20,14 @@ void WeiRtcControl::IpAddress(hstring value) {}
 void WeiRtcControl::Start(hstring value) {
     clazz.Init(Canvas(), pipCanvas(), screenCaptureCanvas(), value);
     clazz.RegisterAppObserver(this);
+
+    _textBox = SupportDesc();
+    _requestBtn = SupportRequest();
+    _titleBlock = SupportTitle();
+    _ring = ProgressRing();
+    _canvas = &Canvas();
+
+//    _mainBrush = new Windows::UI::Xaml::Media::SolidColorBrush(Windows::UI::Colors::BlanchedAlmond());
 }
 
 void WeiRtcControl::WeiRTCButton_Click(
@@ -36,19 +44,13 @@ void WeiRtcControl::SupportRequest_Click(
     Windows::Foundation::IInspectable const& /*sender*/,
     Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {
 
-    _textBox = SupportDesc();
-    _requestBtn = SupportRequest();
-    _titleBlock = SupportTitle();
-
-
-    _ring = ProgressRing();
-
     winrt::hstring msg = _textBox.Text();
     _textBox.Text(L"");
     clazz.CallSupport(msg);
     _ring.IsActive(true);
     _requestBtn.IsEnabled(false);
 
+   // _mainBrush = &(_canvas->Background());
 
     _textBox.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
     _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
@@ -81,6 +83,11 @@ void WeiRtcControl::OnPeerConnectionStatus(int status)
                 _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Visible);
 
             }));
+        /*_canvas->Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _canvas->Background(*_mainBrush);                
+            }));
+            */
     }
 
 }
