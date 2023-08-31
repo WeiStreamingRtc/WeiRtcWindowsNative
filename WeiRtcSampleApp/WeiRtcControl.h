@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "WeiRtcApp.h"
 #include "WeiRtcControl.g.h"
 
 //using namespace WeiStreaming::WeiRtc::Native;
@@ -7,7 +8,7 @@
 
 namespace winrt::WeiRtcSampleApp::implementation {
 struct WeiRtcControl : WeiRtcControlT<WeiRtcControl> {
-    winrt::WeiRtcSampleApp::WeiRtcApp clazz{nullptr};
+    WeiRtcApp clazz;
 
     WeiRtcControl();
     
