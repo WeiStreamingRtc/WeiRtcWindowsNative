@@ -19,6 +19,7 @@ void WeiRtcControl::IpAddress(hstring value) {}
 
 void WeiRtcControl::Start(hstring value) {
     clazz.Init(Canvas(), pipCanvas(), screenCaptureCanvas(), value);
+    clazz.RegisterAppObserver(this);
 }
 
 void WeiRtcControl::WeiRTCButton_Click(
@@ -35,22 +36,72 @@ void WeiRtcControl::SupportRequest_Click(
     Windows::Foundation::IInspectable const& /*sender*/,
     Windows::UI::Xaml::RoutedEventArgs const& /*e*/) {
 
-    Windows::UI::Xaml::Controls::TextBox textBox = SupportDesc();
-    Windows::UI::Xaml::Controls::ProgressRing ring = ProgressRing();
-    Windows::UI::Xaml::Controls::AppBarButton btn = SupportRequest();
+    _textBox = SupportDesc();
+    _requestBtn = SupportRequest();
+    _titleBlock = SupportTitle();
 
-    Windows::UI::Xaml::Controls::TextBlock block = SupportTitle();
 
-    winrt::hstring msg = textBox.Text();
-    textBox.Text(L"");
+    _ring = ProgressRing();
+
+    winrt::hstring msg = _textBox.Text();
+    _textBox.Text(L"");
     clazz.CallSupport(msg);
-    ring.IsActive(true);
-    btn.IsEnabled(false);
+    _ring.IsActive(true);
+    _requestBtn.IsEnabled(false);
 
 
-    textBox.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
-    block.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
+    _textBox.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
+    _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
 }
+
+void WeiRtcControl::OnPeerConnectionStatus(int status)
+{
+
+    if (status == 1) {
+        _ring.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+                {
+                _ring.IsActive(false);
+                }));
+
+    }
+    else {
+        _requestBtn.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _requestBtn.IsEnabled(true);
+
+            }));
+
+        _textBox.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _textBox.Visibility(Windows::UI::Xaml::Visibility::Visible);
+
+            }));
+        _titleBlock.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Visible);
+
+            }));
+    }
+
+}
+void WeiRtcControl::OnSignallingChannelStatus(int status)
+{
+    if (status == 1) {
+        _requestBtn.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _requestBtn.IsEnabled(true); //status is not captured 
+
+            }));
+    }
+    else {
+        _requestBtn.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _requestBtn.IsEnabled(false);
+
+            }));
+    }
+}
+
 
 }  // namespace winrt::WeiRtcSampleApp::implementation
    // winrt::WeiRtcSampleApp::::implementation
