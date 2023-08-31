@@ -113,6 +113,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AppCallStatusObserver.h" />
+    <ClInclude Include="CallStatusObserver.h" />
     <ClInclude Include="signalling\SignallingChannel.h" />
     <ClInclude Include="signalling\SignallingChannelMessageHandler.h" />
     <ClInclude Include="signalling\SimpleSignalling.h" />
@@ -213,6 +215,7 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CallStatusObserver.cpp" />
     <ClCompile Include="signalling\SignallingChannel.cpp" />
     <ClCompile Include="signalling\SimpleSignalling.cpp" />
     <ClCompile Include="tcpSignalling\DirectTcpServer.cpp" />

@@ -1,5 +1,7 @@
 namespace WeiRtcSampleApp
 {
+
+
 	[default_interface]
 	runtimeclass WeiRtcApp
 	{
@@ -10,12 +12,24 @@ namespace WeiRtcSampleApp
 	  Windows.Foundation.IAsyncAction StartDesktopCaptuer();
 	  void CallSupport(String msg);
 	};
+
 	[default_interface]
 	runtimeclass WeiRtcControl : Windows.UI.Xaml.Controls.UserControl
 	{
 		WeiRtcControl();
 		String IpAddress;
 		void Start(String value);
-	}
+	};
 
+	[
+		version (1.0),
+		uuid(a03d1421-b1ec-11d0-8c3a-00c04fc31d2f)
+	]
+	delegate void CallStatusDelegate(int status);
+
+	runtimeclass CallStatusObserver
+	{
+		CallStatusObserver();
+		event WeiRtcSampleApp.CallStatusDelegate  OnCallStatus;
+	}
 }
