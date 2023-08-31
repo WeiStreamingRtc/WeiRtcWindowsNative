@@ -39,11 +39,17 @@ void WeiRtcControl::SupportRequest_Click(
     Windows::UI::Xaml::Controls::ProgressRing ring = ProgressRing();
     Windows::UI::Xaml::Controls::AppBarButton btn = SupportRequest();
 
+    Windows::UI::Xaml::Controls::TextBlock block = SupportTitle();
+
     winrt::hstring msg = textBox.Text();
     textBox.Text(L"");
     clazz.CallSupport(msg);
     ring.IsActive(true);
     btn.IsEnabled(false);
+
+
+    textBox.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
+    block.Visibility(Windows::UI::Xaml::Visibility::Collapsed);
 }
 
 }  // namespace winrt::WeiRtcSampleApp::implementation

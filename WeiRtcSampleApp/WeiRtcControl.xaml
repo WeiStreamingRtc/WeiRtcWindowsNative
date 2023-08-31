@@ -29,7 +29,7 @@
 
             <ProgressRing x:Name="ProgressRing"   IsActive="False" Width="80" Height="80" Margin="0,40" />
 
-            <TextBlock FontSize="20" Text="Type your issue below..."/>
+            <TextBlock x:Name="SupportTitle" FontSize="20" Text="Type your issue below..."/>
             
             <StackPanel Orientation="Horizontal" Margin="0,50,0,50">
 
