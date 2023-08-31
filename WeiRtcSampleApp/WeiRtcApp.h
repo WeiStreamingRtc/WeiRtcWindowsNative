@@ -1,30 +1,20 @@
 ﻿#pragma once
 
-#include "WeiRtcApp.g.h"
-
-namespace winrt::WeiRtcSampleApp::implementation {
-struct WeiRtcApp : WeiRtcAppT<WeiRtcApp> {
-    struct WebRtcSample *_sample = nullptr;
+struct WeiRtcApp {
+    struct WebRtcSample* _sample = nullptr;
 
     WeiRtcApp();
     ~WeiRtcApp();
 
-    hstring _room;
-    hstring Room() const;
+    winrt::hstring _room;
+    winrt::hstring Room() const;
 
-    Windows::Foundation::IAsyncAction WeiRtcApp::Init(
-        Windows::UI::Xaml::UIElement canvas, Windows::UI::Xaml::UIElement pipCanvas, Windows::UI::Xaml::UIElement screenPipCanvas, hstring room);
-    Windows::Foundation::IAsyncAction StartDesktopCaptuer();
+    winrt::Windows::Foundation::IAsyncAction WeiRtcApp::Init(
+        winrt::Windows::UI::Xaml::UIElement canvas, winrt::Windows::UI::Xaml::UIElement pipCanvas, winrt::Windows::UI::Xaml::UIElement screenPipCanvas, winrt::hstring room);
+    winrt::Windows::Foundation::IAsyncAction StartDesktopCaptuer();
 
-    void CallSupport(hstring msg);
+    void CallSupport(winrt::hstring msg);
 
 private:
-    Windows::UI::Xaml::UIElement* _screenPipCanvas;
+    winrt::Windows::UI::Xaml::UIElement* _screenPipCanvas;
 };
-}  // namespace
-   // winrt::WeiRtcSampleApp::implementation 
-
-namespace winrt::WeiRtcSampleApp::factory_implementation {
-struct WeiRtcApp : WeiRtcAppT<WeiRtcApp, implementation::WeiRtcApp> {};
-}  // namespace
-   // winrt::WeiRtcSampleApp::factory_implementation

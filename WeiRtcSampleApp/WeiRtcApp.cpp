@@ -2,7 +2,6 @@
 #include "pch.h"
 
 #include "WeiRtcApp.h"
-#include "WeiRtcApp.g.cpp"
 
 #include <stddef.h>
 #include <memory>
@@ -30,7 +29,6 @@
 
 // clang-format on
 
-namespace winrt::WeiRtcSampleApp::implementation {
 
 struct PeerConnectionOwner {
     virtual void OnPeerConnectionDropped() = 0;
@@ -142,7 +140,7 @@ struct WebRtcSample : public PeerConnectionOwner {
         delete _peerConnectionFactory;
     }
 
-    void CallSupport(hstring msg) {
+    void CallSupport(winrt::hstring msg) {
         _signaling.CallSupport(msg);
     }
     void StartWebSocket() {
@@ -219,20 +217,20 @@ WeiRtcApp::~WeiRtcApp() {
     WeiRtc::CleanupWeiRtc();
 }
 
-hstring WeiRtcApp::Room() const { return _room; }
+winrt::hstring WeiRtcApp::Room() const { return _room; }
 
-Windows::Foundation::IAsyncAction WeiRtcApp::Init(
-    Windows::UI::Xaml::UIElement canvas, Windows::UI::Xaml::UIElement pipCanvas,
-    Windows::UI::Xaml::UIElement screenPipCanvas, hstring room) {
+winrt::Windows::Foundation::IAsyncAction WeiRtcApp::Init(
+    winrt::Windows::UI::Xaml::UIElement canvas, winrt::Windows::UI::Xaml::UIElement pipCanvas,
+    winrt::Windows::UI::Xaml::UIElement screenPipCanvas, winrt::hstring room) {
     if (room.empty()) {
-        throw hresult_invalid_argument();
+        throw winrt::hresult_invalid_argument();
     }
 
     _room = room;
     _screenPipCanvas = &screenPipCanvas;
 
     // This is necessary to avoid STA
-    co_await resume_background();
+    co_await winrt::resume_background();
 
     _sample = new WebRtcSample(_room);
 
@@ -247,17 +245,13 @@ Windows::Foundation::IAsyncAction WeiRtcApp::Init(
     //_sample->StartWebSocket();
 }
 
-Windows::Foundation::IAsyncAction WeiRtcApp::StartDesktopCaptuer()
+winrt::Windows::Foundation::IAsyncAction WeiRtcApp::StartDesktopCaptuer()
 {
-    co_await resume_background();
+    co_await winrt::resume_background();
     _sample->AddDesktopTrack(*_screenPipCanvas);
 }
 
-void WeiRtcApp::CallSupport(hstring msg)
+void WeiRtcApp::CallSupport(winrt::hstring msg)
 {
     _sample->CallSupport(msg);
 }
-
-
-}  // namespace winrt::WeiRtcSampleApp::implementation
-   // namespace winrt::WeiRtcSampleApp::implementation

@@ -10,7 +10,7 @@ using namespace Windows::UI::Xaml;
 namespace winrt::WeiRtcSampleApp::implementation {
 WeiRtcControl::WeiRtcControl() {
     InitializeComponent();
-    clazz = winrt::WeiRtcSampleApp::WeiRtcApp();
+    clazz = WeiRtcApp();
 }
 
 hstring WeiRtcControl::IpAddress() { return clazz.Room(); }

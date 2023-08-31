@@ -275,7 +275,6 @@
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
-    <Midl Include="WeiRtcApp.idl" />
     <Midl Include="WeiRtcControl.idl">
       <DependentUpon>WeiRtcControl.xaml</DependentUpon>
       <FileType>Midl</FileType>
