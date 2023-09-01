@@ -2,6 +2,7 @@
 #include "pch.h"
 
 #include "WeiRtcApp.h"
+#include "WeiRtcAppObserver.h"
 
 #include <stddef.h>
 #include <memory>
@@ -156,6 +157,7 @@ struct WebRtcSample : public PeerConnectionOwner {
     void SetAppObserver(WeiRtcAppObserver* ob)
     {
         _observer = ob;
+        _signaling.SetAppObserver(_observer);
     }
 
 };

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "WeiRtcApp.h"
+#include "WeiRtcAppObserver.h"
 #include "WeiRtcControl.g.h"
 
 //using namespace WeiStreaming::WeiRtc::Native;

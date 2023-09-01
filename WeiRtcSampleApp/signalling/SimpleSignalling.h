@@ -5,6 +5,7 @@
 #include "PeerConnection.h"
 #include "SignallingChannelMessageHandler.h"
 #include "SignallingChannel.h"
+#include "WeiRtcAppObserver.h"
 
 // clang-format on
 
@@ -14,6 +15,7 @@ public:
 	~SimpleSignalling();
 
 	void RegisterPeerConnection(WeiRtc::PeerConnection* peerConnection);
+	void SetAppObserver(WeiRtcAppObserver* ob);
 	virtual void StartSignalling();
 
 	void OnMessage(std::string message) override;
@@ -36,6 +38,7 @@ public:
 private:
 	WeiRtc::PeerConnection* _peerConnection;
 	SignallingChannel* _channel;
+	WeiRtcAppObserver* _appObserver;
 	std::string _clientId;
 	std::string _destId;
 };

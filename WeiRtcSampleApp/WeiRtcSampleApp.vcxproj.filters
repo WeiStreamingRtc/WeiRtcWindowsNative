@@ -327,6 +327,7 @@
     <ClInclude Include="signalling\SignallingChannel.h">
       <Filter>signalling</Filter>
     </ClInclude>
+    <ClInclude Include="WeiRtcAppObserver.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WeiRtcApp.rc" />
@@ -345,7 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
-    <Midl Include="WeiRtcApp.idl" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />

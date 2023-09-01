@@ -64,22 +64,33 @@ void WeiRtcControl::OnPeerConnectionStatus(int status)
                 }));
 
     }
-    else {
-        _requestBtn.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+    else if (status == 3) {
+        _ring.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
             {
-                _requestBtn.IsEnabled(true);
-
-            }));
-
-        _textBox.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
-            {
-                _textBox.Visibility(Windows::UI::Xaml::Visibility::Visible);
-
+                _ring.IsActive(true);
             }));
         _titleBlock.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
             {
                 _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Visible);
+                _titleBlock.Text(L"Remote user hangup...");
+            }));           
+    }
+    else {
+        _ring.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _ring.IsActive(true);
+            }));
+        _titleBlock.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {
+                _titleBlock.Visibility(Windows::UI::Xaml::Visibility::Visible);
+                _titleBlock.Text(L"Call has been dropped.........");
+            }));
 
+        Sleep(50000);
+        _requestBtn.Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal, Windows::UI::Core::DispatchedHandler([this]
+            {                                
+                auto win = Window::Current();
+                win.Close();
             }));
     }
 

@@ -12,7 +12,9 @@ SimpleSignalling::~SimpleSignalling() = default;
 void SimpleSignalling::RegisterPeerConnection(WeiRtc::PeerConnection* peerConnection) {
     _peerConnection = peerConnection;
 }
-
+void SimpleSignalling::SetAppObserver(WeiRtcAppObserver* ob) {
+    _appObserver = ob;
+}
 void SimpleSignalling::StartSignalling() {
     _channel->RegisterMessageCallBack(this);
     _channel->Start();
@@ -47,7 +49,7 @@ void SimpleSignalling::OnMessage(std::string message) {
 
             return;
         }
-        if (type == L"candidate") {
+        else if (type == L"candidate") {
             auto id = json_object.GetNamedString(L"id");
             auto label = json_object.GetNamedNumber(L"label");
             auto candidate = json_object.GetNamedString(L"candidate");
@@ -59,10 +61,14 @@ void SimpleSignalling::OnMessage(std::string message) {
 
             return;
         }
-        if (type == L"Server") {
+        else if (type == L"Server") {
             auto id = json_object.GetNamedString(L"Id");
             _clientId = winrt::to_string(id);
 
+            return;
+        }
+        else if (type == L"Hangup") {
+            _appObserver->OnPeerConnectionStatus(3);
             return;
         }
 
