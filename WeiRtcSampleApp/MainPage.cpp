@@ -99,7 +99,6 @@ winrt::Windows::Foundation::IAsyncAction MainPage::ReadLineFromFileAsync()
 
     Control().Start(to_hstring(line));
 
-    //co_await resume_foreground();
 }
 
 }  // namespace winrt::WeiRtcSampleApp::implementation

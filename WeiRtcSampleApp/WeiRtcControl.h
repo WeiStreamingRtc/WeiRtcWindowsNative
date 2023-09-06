@@ -36,6 +36,7 @@ private:
     Windows::UI::Xaml::Controls::TextBox _textBox;
     Windows::UI::Xaml::Controls::AppBarButton _requestBtn;
     Windows::UI::Xaml::Controls::TextBlock _titleBlock;
+    Windows::UI::Xaml::Controls::AppBarButton _serverBtn;
 
 };
 }  // namespace

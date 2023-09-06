@@ -20,6 +20,10 @@ void WeiRtcControl::IpAddress(hstring value) {}
 void WeiRtcControl::Start(hstring value) {
     clazz.Init(Canvas(), pipCanvas(), screenCaptureCanvas(), value);
     clazz.RegisterAppObserver(this);
+
+    _serverBtn = ServerButton();
+    _serverBtn.Label(value);
+
 }
 
 void WeiRtcControl::WeiRTCButton_Click(
