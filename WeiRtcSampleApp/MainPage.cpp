@@ -3,6 +3,12 @@
 #include "MainPage.h"
 #include "MainPage.g.cpp"
 
+#include <winrt/Windows.ApplicationModel.h>
+#include <winrt/Windows.Storage.h>
+#include <winrt/Windows.Storage.Streams.h>
+#include <winrt/Windows.UI.Core.h>
+#include <iostream>
+
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <iostream>
 #include <Winsock2.h>
@@ -13,6 +19,13 @@
 using namespace winrt;
 using namespace Windows::Security::Cryptography;
 using namespace Windows::UI::Xaml;
+
+using namespace Windows::ApplicationModel;
+using namespace Windows::Storage;
+using namespace Windows::Storage::Streams;
+using namespace Windows::Foundation;
+using namespace Windows::UI::Core;
+using namespace Windows::UI::Xaml::Controls;
 
 #define IPV4_ADDRESS_LENGTH 16
 
@@ -65,7 +78,28 @@ MainPage::MainPage() {
     // Clean up
     delete[] reinterpret_cast<BYTE*>(pAddresses);
     WSACleanup();
-    
-    Control().Start(to_hstring(ipAddress));
+
+    InitializeAsync();
+
+    //Hank for TCP signalling
+    //Control().Start(to_hstring(ipAddress));
 }
+
+winrt::Windows::Foundation::IAsyncAction MainPage::InitializeAsync()
+{
+    co_await ReadLineFromFileAsync();
+}
+
+winrt::Windows::Foundation::IAsyncAction MainPage::ReadLineFromFileAsync()
+{
+    StorageFolder installationFolder = Package::Current().InstalledLocation();
+    StorageFile file = co_await installationFolder.GetFileAsync(L"config.txt");
+
+    hstring line = co_await FileIO::ReadTextAsync(file);
+
+    Control().Start(to_hstring(line));
+
+    //co_await resume_foreground();
+}
+
 }  // namespace winrt::WeiRtcSampleApp::implementation

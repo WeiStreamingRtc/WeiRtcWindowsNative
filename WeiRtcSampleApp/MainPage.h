@@ -5,6 +5,11 @@
 namespace winrt::WeiRtcSampleApp::implementation {
 struct MainPage : MainPageT<MainPage> {
     MainPage();
+    winrt::Windows::Foundation::IAsyncAction ReadLineFromFileAsync();
+    winrt::Windows::Foundation::IAsyncAction InitializeAsync();
+
+private:
+    winrt::hstring _wsUrl;
 };
 }  // namespace winrt::WeiRtcSampleApp::implementation
 

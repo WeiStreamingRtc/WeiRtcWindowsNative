@@ -292,6 +292,9 @@
     <None Include="packages.config" />
     <None Include="PropertySheet.props" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\Microsoft.UI.Xaml.2.5.0-prerelease.200812001\build\native\Microsoft.UI.Xaml.targets" Condition="Exists('..\packages\Microsoft.UI.Xaml.2.5.0-prerelease.200812001\build\native\Microsoft.UI.Xaml.targets')" />

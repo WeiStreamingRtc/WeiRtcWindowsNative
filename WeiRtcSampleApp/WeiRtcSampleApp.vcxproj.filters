@@ -370,4 +370,7 @@
       <UniqueIdentifier>{e1bed013-fd9f-4ef2-b337-3fd77e5ea2c3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
+  </ItemGroup>
 </Project>
